@@ -1,0 +1,52 @@
+{
+  "photos": [
+    {
+      "id": 1,
+      "photographer": "Alex",
+      "country": "Kenya",
+      "url": "https://picsum.photos/id/1018/600/600",
+      "isLiked": false,
+      "title": "A view of the Rift Valley"
+    },
+    {
+      "id": 2,
+      "photographer": "Jane Doe",
+      "country": "Japan",
+      "url": "https://picsum.photos/id/1020/600/600",
+      "isLiked": false,
+      "title": "Sakura blossoms in Tokyo"
+    },
+    {
+      "id": 3,
+      "photographer": "John Smith",
+      "country": "Iceland",
+      "url": "https://picsum.photos/id/1025/600/600",
+      "isLiked": false,
+      "title": "Northern lights over the city"
+    },
+    {
+      "id": 4,
+      "photographer": "Emily White",
+      "country": "Italy",
+      "url": "https://picsum.photos/id/1026/600/600",
+      "isLiked": false,
+      "title": "Gondola in Venice"
+    },
+    {
+      "id": 5,
+      "photographer": "Ryan Chen",
+      "country": "USA",
+      "url": "https://picsum.photos/id/1027/600/600",
+      "isLiked": false,
+      "title": "Grand Canyon vista"
+    },
+    {
+      "id": 6,
+      "photographer": "Sarah Liu",
+      "country": "Brazil",
+      "url": "https://picsum.photos/id/1028/600/600",
+      "isLiked": false,
+      "title": "Rio de Janeiro beaches"
+    }
+  ]
+}
