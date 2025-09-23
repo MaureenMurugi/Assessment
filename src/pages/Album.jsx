@@ -15,7 +15,7 @@ const Album = () => {
       setLoading(true);
       setError(null);
       try {
-        // Fetch photos from jsonplaceholder and limit to 100 for better performance
+        // include pagination
         const response = await fetch('https://jsonplaceholder.typicode.com/photos?_limit=100');
         if (!response.ok) {
           throw new Error('Failed to fetch photos from API.');
@@ -23,7 +23,6 @@ const Album = () => {
 
         const data = await response.json();
         
-        // Add photographer, country, and isLiked state to each photo object
         const photosWithExtraData = data.map(photo => ({
           ...photo,
           photographer: photographers[Math.floor(Math.random() * photographers.length)],
