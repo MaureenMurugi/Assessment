@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "test:api": "mocha --timeout 10000 \"tests/backend/**/*.test.js\"",
     "cypress:open": "cypress open",
-    "test": "npm run test:api && npm run test:frontend"
+    "test": "npm run test:api && npm run test:frontend",
+    "test:perf": "k6 run tests/performance/photos_test.js"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.13",
