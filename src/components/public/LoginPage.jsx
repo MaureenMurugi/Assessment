@@ -10,20 +10,22 @@ const LoginPage = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Simulate login logic
     if (email && password) {
-      // Simulate successful login
       localStorage.setItem('token', 'simulated-token'); // Store a fake token
-      alert('Login successful! Navigating to Home page.');
       navigate('/home');
     } else {
       setError('Please enter both email and password.');
     }
   };
 
+  const handleSignUp = () => {
+    navigate('/user');
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white shadow-2xl rounded-xl overflow-hidden w-full max-w-4xl flex flex-col md:flex-row">
+        {/* Left Section - Form */}
         <div className="flex-1 p-8 sm:p-12 md:p-16 flex flex-col justify-center">
           <div className="max-w-md mx-auto">
             <h2 className="text-4xl font-extrabold text-gray-900 mb-2">Welcome Back</h2>
@@ -72,12 +74,25 @@ const LoginPage = () => {
               <div>
                 <button
                   type="submit"
+                  id='login-button'
                   className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out"
                 >
                   Log In
                 </button>
               </div>
             </form>
+
+            <div className="mt-6 text-center text-sm">
+              <p className="text-gray-600">
+                New to the site?{' '}
+                <span
+                  onClick={handleSignUp}
+                  className="font-medium text-indigo-600 hover:text-indigo-500 cursor-pointer hover:underline"
+                >
+                  Sign up here
+                </span>
+              </p>
+            </div>
           </div>
         </div>
 

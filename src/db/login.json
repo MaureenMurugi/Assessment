@@ -1,0 +1,97 @@
+{
+  "login": [
+    {
+      "id": "48ec"
+    },
+    {
+      "id": "ec67",
+      "email": "testuser@example.com",
+      "password": "password123"
+    },
+    {
+      "id": "584a",
+      "email": "testuser@example.com",
+      "password": "password123"
+    },
+    {
+      "id": "fa0c",
+      "email": "testuser@example.com",
+      "password": "password123"
+    },
+    {
+      "id": "1ffb",
+      "email": "testuser@example.com",
+      "password": "password123"
+    },
+    {
+      "id": "9be9",
+      "email": "testuser@example.com",
+      "password": "password123"
+    },
+    {
+      "id": "4e8d",
+      "email": "testuser@example.com",
+      "password": "password123"
+    },
+    {
+      "id": "d79a",
+      "email": "testuser@example.com",
+      "password": "password123"
+    },
+    {
+      "id": "528b",
+      "email": "testuser@example.com",
+      "password": "password123"
+    },
+    {
+      "id": "f5d7",
+      "email": "testuser@example.com",
+      "password": "password123"
+    },
+    {
+      "id": "11f2",
+      "email": "testuser@example.com",
+      "password": "password123"
+    },
+    {
+      "id": "cad7",
+      "email": "testuser@example.com",
+      "password": "password123"
+    },
+    {
+      "id": "b0da",
+      "email": "testuser@example.com",
+      "password": "password123"
+    },
+    {
+      "id": "99b0",
+      "email": "testuser@example.com",
+      "password": "password123"
+    },
+    {
+      "id": "3fbd",
+      "email": "testuser@example.com",
+      "password": "password123"
+    },
+    {
+      "id": "4623",
+      "email": "testuser@example.com",
+      "password": "password123"
+    },
+    {
+      "id": "55bc",
+      "email": "testuser@example.com",
+      "password": "password123"
+    },
+    {
+      "id": "8ac6",
+      "email": "testuser@example.com",
+      "password": "password123"
+    },
+    {
+      "id": "fb24",
+      "email": "testuser@example.com",
+      "password": "password123"
+    }
+  ]
+}
