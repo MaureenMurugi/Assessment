@@ -1,11 +1,20 @@
-// src/pages/User.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+// Hardcoded list of existing user emails for validation
+// In a real application, this would be a check against a database
+const existingUsers = [
+  'testuser@example.com',
+  'john.doe@example.com',
+  'jane.smith@example.com'
+];
 
 const User = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    password: '',
+    confirmPassword: '',
     description: '',
     countries: '',
     samplePhotos: ''
@@ -22,8 +31,23 @@ const User = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
     setMessage('');
+
+    // Check if the email already exists
+    if (existingUsers.includes(formData.email)) {
+        setIsSuccess(false);
+        setMessage('A user with this email already exists. Please use a different email or log in.');
+        return;
+    }
+
+    // Password validation
+    if (formData.password !== formData.confirmPassword) {
+      setIsSuccess(false);
+      setMessage('Passwords do not match. Please try again.');
+      return;
+    }
+
+    setLoading(true);
 
     try {
       const response = await fetch('https://jsonplaceholder.typicode.com/users', {
@@ -31,8 +55,8 @@ const User = () => {
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
-          // Mapping custom fields to the API's available fields
           username: formData.email,
+          password: formData.password,
           company: { catchPhrase: formData.description },
           address: { city: formData.countries },
         }),
@@ -49,20 +73,10 @@ const User = () => {
       console.log('New profile created:', newUser);
       
       setIsSuccess(true);
-      setMessage('Profile created successfully! Please log in to continue.');
+      setMessage('Profile created successfully! Navigating to home...');
       
-      // Clear the form after a successful submission
-      setFormData({
-        name: '',
-        email: '',
-        description: '',
-        countries: '',
-        samplePhotos: ''
-      });
-
-      // You might redirect the user after a short delay
       setTimeout(() => {
-        navigate('/login');
+        navigate('/home');
       }, 3000);
 
     } catch (error) {
@@ -94,7 +108,6 @@ const User = () => {
             Create Your Profile
           </h3>
           
-          {/* Status Message */}
           {message && (
             <div className={`p-3 mb-4 rounded-lg text-center ${isSuccess ? 'bg-green-500' : 'bg-red-500'}`}>
               {message}
@@ -126,6 +139,32 @@ const User = () => {
                 className="mt-1 block w-full px-4 py-2 border border-gray-600 rounded-md shadow-sm bg-gray-700 text-white focus:outline-none focus:ring-green-500 focus:border-green-500"
               />
             </div>
+            {/* New Password and Confirm Password fields */}
+            <div>
+              <label htmlFor="password" className="block text-sm font-medium text-gray-300">Password</label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                required
+                value={formData.password}
+                onChange={handleChange}
+                className="mt-1 block w-full px-4 py-2 border border-gray-600 rounded-md shadow-sm bg-gray-700 text-white focus:outline-none focus:ring-green-500 focus:border-green-500"
+              />
+            </div>
+            <div>
+              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-300">Confirm Password</label>
+              <input
+                id="confirmPassword"
+                name="confirmPassword"
+                type="password"
+                required
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                className="mt-1 block w-full px-4 py-2 border border-gray-600 rounded-md shadow-sm bg-gray-700 text-white focus:outline-none focus:ring-green-500 focus:border-green-500"
+              />
+            </div>
+            {/* End of new fields */}
             <div>
               <label htmlFor="description" className="block text-sm font-medium text-gray-300">Photography Style (Description)</label>
               <textarea

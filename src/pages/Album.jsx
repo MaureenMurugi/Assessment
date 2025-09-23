@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
+const photographers = ['Alexey M', 'Sarah T.', 'David R.', 'Maria S.', 'Chen L.'];
+const countries = ['Kenya', 'Spain', 'Japan', 'Canada', 'Brazil', 'Mexico', 'France'];
+
 const Album = () => {
   const [allPhotos, setAllPhotos] = useState([]);
   const [displayedPhotos, setDisplayedPhotos] = useState([]);
@@ -12,20 +15,24 @@ const Album = () => {
       setLoading(true);
       setError(null);
       try {
-        const response = await fetch('http://localhost:3001/photos');
+        // Fetch photos from jsonplaceholder and limit to 100 for better performance
+        const response = await fetch('https://jsonplaceholder.typicode.com/photos?_limit=100');
         if (!response.ok) {
-          throw new Error('Failed to fetch photos from local server.');
+          throw new Error('Failed to fetch photos from API.');
         }
 
         const data = await response.json();
         
-        const photosWithState = data.map(photo => ({
+        // Add photographer, country, and isLiked state to each photo object
+        const photosWithExtraData = data.map(photo => ({
           ...photo,
+          photographer: photographers[Math.floor(Math.random() * photographers.length)],
+          country: countries[Math.floor(Math.random() * countries.length)],
           isLiked: false
         }));
 
-        setAllPhotos(photosWithState);
-        setDisplayedPhotos(photosWithState);
+        setAllPhotos(photosWithExtraData);
+        setDisplayedPhotos(photosWithExtraData);
       } catch (e) {
         setError(e.message);
         setAllPhotos([]);
@@ -118,7 +125,6 @@ const Album = () => {
               className="w-full rounded-lg shadow-lg transition-transform duration-300 ease-in-out group-hover:scale-105"
             />
             
-            {/* The badge container now has a transparent background */}
             <div className="absolute inset-0 rounded-lg flex flex-col justify-between p-4">
               <div className="flex justify-end">
                 <button
