@@ -1,0 +1,29 @@
+"Savannah Informatics — Quality Assurance Engineer Assessment
+Manual Test Plan & Test Cases
+
+QA Engineer: Maureen Murugi",,,,,,
+"Assumptions
+1. The web application consumes data from https://jsonplaceholder.typicode.com/ (Users, Albums, Photos).
+2. App pages: Landing (/), Login (/login), Authenticated: Home (/home), User (/users), Album (/albums), Photo (/photos).",,,,,,
+Test case ID,Test case,Pre-conditions,Steps,Expected Result,Status,Feedback
+,Landing page loads - View Users list,App deployed and reachable,,"1. Successful display of the landing page contents
+2. Users list populated from /users endpoint;
+3. Each user displays their name; clicking a user allows the user to log in.",Fail,Some photos URL within the API are failing
+,Login Page,Valid user exists (use jsonplaceholder user/email),"1. Navigate to the Login Page.
+2. Enter valid email and password.
+3. Click the ""Login"" button.","1. User is authenticated and redirected to /home
+2. Auth token present (cookie/localStorage). 
+3. No page refresh that breaks login.",Pass,
+,Login with invalid credentials,Login page open,"1. Enter an invalid email or password.
+2. Click Login.","1. Login fails; user remains unauthenticated
+2.  An inline error message is shown (e.g., ""Invalid credentials"")
+3.  HTTP 401 or 400 returned by API.
+4. Client-side validation triggers; form not submitted; field-level error messages for missing fields",Pass,
+,Logout clears session,User is logged in,1. Click Logout.,1. User redirected to landing or login; auth token removed from storage/cookies; protected pages not accessible.,Fail,Some photos URL within the API are failing
+,View Albums list,User is logged in,1. Navigate to /albums from the Home page,1. Albums populated from /albums.,Pass,
+,View Photos list & open photo,"Logged in, /photos open","1. Navigate to /photos.
+2. Click a photo thumbnail.","1. Lightbox/modal shows full-size image and metadata
+2.  Modal is accessible (esc to close).",Pass,
+,Search photos/albums,"User is logged in, /albums open","1. Enter the search term qui into #search.
+2. Trigger search (enter or click search).",1. Listing filters to items matching qui; first result contains search term in title or description.,Pass,
+,Image load fallback,Network throttling available,1. Disable image or force 404 on image URL.,1. Placeholder image or alt text shown; layout remains intact.,Fail,
