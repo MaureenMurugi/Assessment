@@ -73,7 +73,7 @@ const Home = () => {
     <div className="bg-gray-900 text-white min-h-screen font-sans">
       {/* Navigation Bar */}
       <nav className="absolute top-0 left-0 w-full p-6 flex justify-between items-center z-50">
-        <Link to="/album" className="text-white text-lg font-semibold tracking-wider hover:text-indigo-400 transition-colors duration-300">
+        <Link to="/album" id="view-albums-link" className="text-white text-lg font-semibold tracking-wider hover:text-indigo-400 transition-colors duration-300">
           VIEW ALBUMS
         </Link>
         <span className="text-white text-3xl font-extrabold tracking-widest hover:text-indigo-400 transition-colors duration-300">

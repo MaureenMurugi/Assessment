@@ -1,0 +1,37 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout repo
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # 4. Run backend API tests
+      - name: Run API tests
+        run: npm run test:api
+
+      # 5. Run Cypress tests (frontend E2E)
+      - name: Run Cypress tests
+        uses: cypress-io/github-action@v6
+        with:
+          install: false # deps already installed in step 3
+          command: npm run test:frontend
